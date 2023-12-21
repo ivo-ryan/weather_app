@@ -2,6 +2,7 @@ const apiKey = "659b632f3fd5077eee5db03541b85290";
 
 const weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=";
 
+const apiUnsplash = "https://source.unsplash.com/1600x900/?";
 
 const cityInput = document.getElementById("city-input");
 const searchBtn = document.getElementById("search");
@@ -17,27 +18,37 @@ const weatherContainer = document.querySelector("#weather-data")
 
 const cityNotFound = document.querySelector("#city-not-found")
 
+const loader = document.querySelector("#loader");
+
+const loaderToggler = () => {
+    loader.classList.toggle("hide")
+}
+
 const getWeatherData = async (city) => {
+
+        loaderToggler()
+
         const apiWeatherURL = await fetch(`${weatherApi}${city}&units=metric&appid=${apiKey}&lang=pt_br`)
-        const response = await apiWeatherURL.json()
+        const response = await apiWeatherURL.json();
+
+        loaderToggler()
+
         return response;
 };
+
+const hideInformation = () => {
+    weatherContainer.classList.add("hide");
+    cityNotFound.classList.add("hide")
+}
 
 
 
 const showWeatherData = async (city) => {
+    hideInformation()
    const data = await getWeatherData(city);
 
-
-    if (data.cod === "404") {
-        weatherContainer.classList.add("hide")
-    }
    if (data.cod === "404") {
             cityNotFound.classList.remove("hide");
-
-           return cityNotFound.innerHTML = "<h3>Cidade não encontrada !</h3>"
-   }else{
-    cityNotFound.classList.add("hide");
    }
 
    cityElement.innerText = data.name;
@@ -48,7 +59,9 @@ const showWeatherData = async (city) => {
    umidityElement.innerText = `${data.main.humidity} %`;
    windElement.innerText = `${data.wind.speed} km/h`
 
-   weatherContainer.classList.remove("hide")
+   weatherContainer.classList.remove("hide");
+
+   document.body.style.backgroundImage = `url("${apiUnsplash + city }")`
 };
 
 

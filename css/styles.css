@@ -106,7 +106,30 @@ body{
 }
 
 #city-not-found {
-    padding-top: 20px;
+    height: 50%;
+}
+
+#city-not-found h3 {
+    display: flex;
+    align-items: center;
+    height: 100%;
     color: rgba(234, 7, 7, 0.752);
 }
 
+#loader{
+    height: 50%;
+}
+
+#loader i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    animation: rotate 0.8s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
