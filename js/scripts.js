@@ -21,8 +21,8 @@ const cityNotFound = document.querySelector("#city-not-found")
 const loader = document.querySelector("#loader");
 
 const loaderToggler = () => {
-    loader.classList.toggle("hide")
-}
+    loader.classList.toggle("hide");
+};
 
 const getWeatherData = async (city) => {
 
@@ -38,8 +38,8 @@ const getWeatherData = async (city) => {
 
 const hideInformation = () => {
     weatherContainer.classList.add("hide");
-    cityNotFound.classList.add("hide")
-}
+    cityNotFound.classList.add("hide");
+};
 
 
 
@@ -57,11 +57,11 @@ const showWeatherData = async (city) => {
    weatherIconElement.setAttribute("src", ` http://openweathermap.org/img/wn/${data.weather[0].icon}.png `);
    countryElement.setAttribute("src",` https://flagsapi.com/${data.sys.country}/flat/64.png `);
    umidityElement.innerText = `${data.main.humidity} %`;
-   windElement.innerText = `${data.wind.speed} km/h`
+   windElement.innerText = `${data.wind.speed} km/h`;
 
    weatherContainer.classList.remove("hide");
 
-   document.body.style.backgroundImage = `url("${apiUnsplash + city }")`
+   document.body.style.backgroundImage = `url("${apiUnsplash + city }")`;
 };
 
 

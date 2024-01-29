@@ -6,7 +6,7 @@
 }
 
 body{
-    background: linear-gradient(180deg, #594cee 0%, #8dd0f5 100%);
+    background: linear-gradient(180deg, #323946 0%, #8dd0f5 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,11 +19,18 @@ body{
 }
 
 .container{
-    background-color: #5c54ed;
+    background-color: #323946;
     box-shadow: rgba ( 0, 0, 0, 0.24);
     padding: 2rem;
     color: #fdfdfd;
     border-radius: 1rem;
+    animation: box 1.5s ease alternate infinite;
+}
+
+@keyframes box {
+    to{
+        filter: drop-shadow( 0 0 10px #AA1DEF);
+    }
 }
 
 .form h3{
@@ -36,21 +43,31 @@ body{
 
 .form input {
     padding: .8rem;
-    border: none;
+    border: 2px solid #323946;
     outline: none;
     flex: 1;
     border-radius: 4px;
+    transition: all .5s ease;
+}
+
+.form input:focus{
+    border: 2px solid #AA1DEF;
 }
 
 .form button {
     padding: 0.8rem;
     min-width: 50px;
     margin-left: 8px;
-    background-color: #8dd0f5;
+    background-color: #AA1DEF;
     color: #FFF;
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    transition: all 0.5s ease-in;
+}
+
+.form button:hover{
+    box-shadow: 0 0 5px #AA1DEF;
 }
 
 #weather-data {
